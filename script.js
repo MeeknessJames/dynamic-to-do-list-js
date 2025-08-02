@@ -50,3 +50,25 @@ document.addEventListener('DOMContentLoaded', () => {
       li.textContent = taskText;
 
       const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remove';
+      removeBtn.classList.add('remove-btn');
+
+      removeBtn.onclick = () => {
+        taskList.removeChild(li);
+        saveTasks();
+      };
+
+      li.appendChild(removeBtn);
+      taskList.appendChild(li);
+    });
+  }
+
+  addButton.addEventListener('click', addTask);
+
+  taskInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      addTask();
+    }
+  });
+
+});
