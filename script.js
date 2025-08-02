@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
   const addButton = document.getElementById('add-task-btn');
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
-    removeBtn.className = 'remove-btn';
+    removeBtn.classList.add('remove-btn');
 
     removeBtn.onclick = () => {
       taskList.removeChild(li);
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function saveTasks() {
     const tasks = [];
     taskList.querySelectorAll('li').forEach(li => {
-
       const task = li.firstChild.textContent.trim();
       tasks.push(task);
     });
@@ -52,25 +50,3 @@ document.addEventListener('DOMContentLoaded', () => {
       li.textContent = taskText;
 
       const removeBtn = document.createElement('button');
-      removeBtn.textContent = 'Remove';
-      removeBtn.className = 'remove-btn';
-
-      removeBtn.onclick = () => {
-        taskList.removeChild(li);
-        saveTasks();
-      };
-
-      li.appendChild(removeBtn);
-      taskList.appendChild(li);
-    });
-  }
-
-  addButton.addEventListener('click', addTask);
-
-  taskInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-      addTask();
-    }
-  });
-
-});
