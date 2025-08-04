@@ -3,11 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const taskInput = document.getElementById('task-input');
   const taskList = document.getElementById('task-list');
 
-  loadTasks(); 
+  loadTasks();
 
-  function addTask() {
-    const taskText = taskInput.value.trim(); 
-
+  function addTask(taskText) {
     if (taskText === "") {
       alert("Please enter a task!");
       return;
@@ -22,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     removeBtn.onclick = () => {
       taskList.removeChild(li);
-      removeTaskFromStorage(taskText); 
+      removeTaskFromStorage(taskText);
     };
 
     li.appendChild(removeBtn);
     taskList.appendChild(li);
 
-    taskInput.value = ""; 
+    taskInput.value = "";
 
     const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
     tasks.push(taskText);
@@ -61,11 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  addButton.addEventListener('click', addTask);
+  addButton.addEventListener('click', () => {
+    const taskText = taskInput.value.trim();
+    addTask(taskText);
+  });
 
   taskInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-      addTask();
+      const taskText = taskInput.value.trim();
+      addTask(taskText);
     }
   });
 });
