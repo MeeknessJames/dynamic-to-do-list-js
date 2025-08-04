@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadTasks();
 
-  function addTask(taskText) {
+  function addTask() {
+    const taskText = taskInput.value.trim();
+
     if (taskText === "") {
       alert("Please enter a task!");
       return;
@@ -59,15 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  addButton.addEventListener('click', () => {
-    const taskText = taskInput.value.trim();
-    addTask(taskText);
-  });
+  addButton.addEventListener('click', addTask);
 
   taskInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-      const taskText = taskInput.value.trim();
-      addTask(taskText);
+      addTask();
     }
   });
 });
