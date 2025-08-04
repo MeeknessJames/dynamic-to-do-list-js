@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const taskInput = document.getElementById('task-input');
   const taskList = document.getElementById('task-list');
 
-  loadTasks();
+  loadTasks(); 
 
   function addTask() {
     const taskText = taskInput.value.trim();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = "Remove";
-    removeBtn.className = 'remove-btn';
+    removeBtn.classList.add('remove-btn');
 
     removeBtn.onclick = () => {
       taskList.removeChild(li);
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const removeBtn = document.createElement('button');
       removeBtn.textContent = "Remove";
-      removeBtn.className = 'remove-btn';
+      removeBtn.classList.add('remove-btn');
 
       removeBtn.onclick = () => {
         taskList.removeChild(li);
